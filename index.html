@@ -1,0 +1,2110 @@
+<!doctype html>
+<html lang="pt-BR" data-theme="light">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Demonstração de uma central de procedimentos com busca local e respostas vinculadas às fontes.">
+  <meta name="color-scheme" content="light dark">
+  <title>Atlas de Processos · Demonstração de portfólio</title>
+  <style>:root{color-scheme:light;--bg:#f4f6f4;--surface:#fff;--text:#152922;--muted:#4f665b;--border:#d8e3dc;--accent:#17674f;--accent-soft:#e4f1eb;--hero:#122f2a;--hero-fg:#fff;--hero-muted:#d1e4db;--shadow:0 10px 32px #1a493014;font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+[data-theme="dark"]{color-scheme:dark;--bg:#101a17;--surface:#17251f;--text:#edf6ef;--muted:#a9c1b4;--border:#30463b;--accent:#8edabc;--accent-soft:#253e33;--hero:#1c3930;--shadow:0 10px 28px #0003}
+*{box-sizing:border-box}body{margin:0;min-height:100dvh;background:var(--bg);color:var(--text);display:flex;flex-direction:column}a{color:inherit;text-decoration:none}button,input{font:inherit}button{cursor:pointer}input{min-width:0}button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid #bc7926;outline-offset:3px}[hidden]{display:none!important}svg{display:block;width:22px;height:22px}.sr,.skip:not(:focus){position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}.skip:focus{position:fixed;z-index:9;background:var(--surface);padding:12px}.top{background:var(--surface);border-bottom:1px solid var(--border)}.top-inner{max-width:1230px;margin:auto;padding:14px 26px;display:flex;align-items:center;gap:28px;justify-content:space-between}.brand,.top-end,.nav{display:flex;align-items:center;gap:10px}.brand{font-weight:800;font-size:19px;letter-spacing:-.045em;white-space:nowrap}.brand-sub{font-weight:600}.brand-icon,.tile{display:grid;place-items:center;border-radius:12px;background:var(--accent-soft);color:var(--accent);width:42px;height:42px;flex:none}.nav a{font-size:14px;font-weight:650;padding:9px 13px;border-radius:10px;color:var(--muted)}.nav a[aria-current="page"]{color:var(--accent);background:var(--accent-soft)}.demo-mark{font-size:12px;color:var(--muted);font-weight:650;white-space:nowrap;display:flex;align-items:center;gap:6px}.demo-mark span{width:7px;height:7px;border-radius:50%;background:#44a983}.icon-btn{display:grid;place-items:center;width:42px;height:42px;border:1px solid var(--border);border-radius:11px;background:var(--surface);color:var(--text)}#main{width:min(100%,1230px);margin:0 auto;flex:1;padding:26px}.screen{animation:appear .24s ease-out}@keyframes appear{from{opacity:.5;transform:translateY(4px)}to{opacity:1;transform:translateY(0)}}
+.hero{position:relative;overflow:hidden;border-radius:22px;background:radial-gradient(ellipse at 80% 20%,#305c49 0%,transparent 62%),var(--hero);color:var(--hero-fg);padding:38px 42px;min-height:310px}.hero-content{position:relative;z-index:1;max-width:650px}.eyebrow{margin:0 0 10px;color:var(--accent);font-size:11px;line-height:1.4;font-weight:800;letter-spacing:.12em;text-transform:uppercase}.hero .eyebrow{color:#b2e6cc}.hero h1,.section-intro h1,#detail h1{margin:0;font-size:clamp(35px,5vw,60px);font-weight:740;line-height:1.02;letter-spacing:-.06em}.hero p:not(.eyebrow){color:var(--hero-muted);font-size:16px;max-width:515px;line-height:1.55;margin:14px 0 20px}.search{display:flex;align-items:center;gap:12px;max-width:540px;padding:5px 13px;border-radius:12px;background:#fff;color:#30483e;min-height:50px}.search:focus-within{outline:3px solid #e8b973;outline-offset:3px}.search input{color:#152922;background:transparent;border:0;flex:1;outline:none!important;padding:8px 0}.search kbd{font-size:11px;white-space:nowrap;border:1px solid #d8e3dc;border-radius:6px;padding:4px 6px}.hero-art{position:absolute;right:38px;top:50%;transform:translateY(-50%);width:320px;height:250px;display:grid;place-items:center;opacity:.86}.orbit{position:absolute;border:1px solid #abdcc351;border-radius:50%;width:285px;height:185px;transform:rotate(-28deg)}.o2{transform:rotate(28deg)}.o3{transform:rotate(90deg);width:222px;height:190px}.node{position:absolute;width:9px;height:9px;background:#b3ead2;border-radius:50%;box-shadow:0 0 15px #b3ead2}.n1{left:50px;top:65px}.n2{right:34px;bottom:65px}.n3{right:95px;top:28px}.hero-icon{display:grid;place-items:center;background:#b6edd322;border:1px solid #b6edd377;border-radius:26px;transform:rotate(-9deg);width:92px;height:92px;color:#d2f5e5;box-shadow:0 15px 40px #0003}.hero-icon svg{width:49px;height:49px}
+.catalog-head{display:flex;align-items:end;justify-content:space-between;gap:10px;margin:29px 0 15px}.catalog-head .eyebrow{margin-bottom:4px}h2{margin:0;font-size:25px;letter-spacing:-.04em}.count{color:var(--muted);font-size:14px;margin:0 0 3px}.filters{display:flex;gap:8px;flex-wrap:wrap;margin:0 0 17px}.filter,.text-btn,.secondary,.primary{border-radius:9px;padding:9px 13px;font-size:14px;font-weight:700}.filter,.secondary{border:1px solid var(--border);background:var(--surface);color:var(--muted)}.filter[aria-pressed="true"],.secondary[aria-pressed="true"]{color:var(--accent);background:var(--accent-soft);border-color:transparent}.card-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:13px}.card,.chat,.suggestions,.article-panel,.empty{border:1px solid var(--border);border-radius:15px;background:var(--surface);box-shadow:var(--shadow)}.card{padding:17px;display:flex;flex-direction:column;gap:10px}.card-top{display:flex;align-items:center;justify-content:space-between}.card .tile{width:39px;height:39px}.card button{background:none;border:0;color:var(--muted);padding:8px;border-radius:8px}.card button[aria-pressed="true"]{color:var(--accent);background:var(--accent-soft)}.card .card-cat{margin:0;font-size:11px;text-transform:uppercase;font-weight:800;letter-spacing:.1em;color:var(--accent)}.card h3{margin:0;font-size:19px;letter-spacing:-.025em}.card p{margin:0;color:var(--muted);font-size:14px;line-height:1.48}.card a{width:max-content;max-width:100%;color:var(--accent);font-size:13px;font-weight:750;margin-top:auto;padding-top:6px}.card a:hover,.back:hover,.source:hover{text-decoration:underline}.empty{grid-column:1/-1;padding:24px;color:var(--muted)}
+.section-intro{margin:18px 0 23px}.section-intro p:not(.eyebrow),.article-desc{color:var(--muted);line-height:1.6}.section-intro h1,#detail h1{font-size:clamp(32px,5vw,49px)}.back{display:inline-block;margin:4px 0 18px;color:var(--accent);font-size:14px;font-weight:750}.article-panel{padding:clamp(17px,4vw,34px);max-width:900px;margin:auto}.article-panel .secondary{margin:8px 0 10px}.article-section{padding:18px 0;border-top:1px solid var(--border);scroll-margin:20px}.article-section p{line-height:1.7;margin-bottom:0}.article-section.highlight{outline:2px solid var(--accent);outline-offset:8px;border-radius:5px}
+.assistant-layout{display:grid;grid-template-columns:minmax(0,1fr) 295px;gap:17px}.chat{overflow:hidden;min-width:0}.chat-head{display:flex;align-items:center;gap:10px;padding:14px;border-bottom:1px solid var(--border)}.chat-head small{display:block;color:var(--muted);font-size:12px}.chat-head button{margin-left:auto}.text-btn{border:0;background:transparent;color:var(--accent)}.messages{min-height:252px;max-height:455px;overflow:auto;padding:16px;display:flex;flex-direction:column;gap:12px;overflow-wrap:anywhere}.bubble{max-width:92%;border-radius:13px;padding:12px 14px;background:var(--accent-soft);width:fit-content;white-space:pre-wrap;line-height:1.55}.bubble.user{align-self:end;background:var(--bg);border:1px solid var(--border)}.bubble p{margin:0}.source{display:block;margin-top:9px;color:var(--accent);font-size:13px;font-weight:750}.bubble small{display:block;margin-top:8px;color:var(--muted);font-size:12px}.bubble details{margin-top:7px;font-size:12px;color:var(--muted)}.bubble summary{cursor:pointer}.ask-form{border-top:1px solid var(--border);padding:12px;display:flex;gap:8px}.ask-form input{flex:1;background:var(--bg);border:1px solid var(--border);border-radius:9px;padding:10px;color:var(--text)}.primary{background:var(--accent);color:var(--surface);border:1px solid transparent}.suggestions{padding:16px;height:fit-content}.suggestions h2{font-size:21px}.suggestions p:not(.eyebrow){font-size:14px;color:var(--muted);line-height:1.55}.examples{display:grid;gap:8px}.examples button{text-align:left;line-height:1.4}.footer{padding:15px 26px;display:flex;gap:8px;justify-content:space-between;border-top:1px solid var(--border);color:var(--muted);font-size:12px;width:min(100%,1230px);margin:auto}
+@media(max-width:850px){.hero-art{right:-40px;opacity:.45}.card-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.assistant-layout{grid-template-columns:1fr}.examples{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:580px){.top-inner{padding:10px 14px;gap:7px;flex-wrap:wrap}.brand{font-size:18px}.top-end{margin-left:auto}.nav{order:3;width:100%;justify-content:space-between;gap:3px}.nav a{flex:1;text-align:center;padding:9px 4px}.demo-mark{font-size:11px}.brand-icon,.icon-btn{width:36px;height:36px}#main{padding:14px}.hero{padding:24px 16px;min-height:0;border-radius:15px}.hero-art{right:-110px;opacity:.23}.wide-break,.search kbd{display:none}.search{gap:7px;padding:5px 9px}.search input{font-size:14px}.catalog-head{margin-top:23px}.catalog-head h2{font-size:21px}.count{white-space:nowrap;font-size:12px}.card-grid{grid-template-columns:1fr}.card{padding:14px}.footer{padding:12px 14px;flex-wrap:wrap}.ask-form{padding:8px}.ask-form input{padding:8px;font-size:14px}.examples{grid-template-columns:1fr}}
+@media(prefers-reduced-motion:reduce){.screen{animation:none}}
+</style>
+</head>
+<body>
+  <a class="skip" href="#main">Pular para o conteúdo</a>
+  <header class="top">
+    <div class="top-inner">
+      <a class="brand" href="#catalogo"><span id="brand-icon" class="brand-icon" aria-hidden="true"></span><span>Atlas<span class="brand-sub"> de Processos</span></span></a>
+      <nav class="nav" aria-label="Menu principal">
+        <a href="#catalogo" data-nav="catalogo">Catálogo</a>
+        <a href="#assistente" data-nav="assistente">Assistente</a>
+        <a href="#favoritos" data-nav="favoritos">Favoritos</a>
+      </nav>
+      <div class="top-end">
+        <span class="demo-mark"><span></span> Dados fictícios</span>
+        <button id="theme" class="icon-btn" type="button" title="Alternar tema" aria-label="Ativar tema escuro"></button>
+      </div>
+    </div>
+  </header>
+  <main id="main" tabindex="-1">
+    <section id="catalog" class="screen" aria-labelledby="catalog-title">
+      <div class="hero">
+        <div class="hero-art" aria-hidden="true">
+          <span class="orbit o1"></span><span class="orbit o2"></span><span class="orbit o3"></span>
+          <span class="node n1"></span><span class="node n2"></span><span class="node n3"></span>
+          <div id="hero-icon" class="hero-icon"></div>
+        </div>
+        <div class="hero-content">
+          <p class="eyebrow">Base de conhecimento · Edição de portfólio</p>
+          <h1 id="catalog-title">Conhecimento para<br class="wide-break"> a operação.</h1>
+          <p>Encontre procedimentos, consulte etapas e faça perguntas com respostas ligadas à fonte.</p>
+          <div class="search">
+            <span id="search-icon" aria-hidden="true"></span>
+            <label for="search" class="sr">Buscar procedimento</label>
+            <input id="search" type="search" maxlength="600" placeholder="Busque por título ou palavra-chave" autocomplete="off">
+            <kbd aria-hidden="true">Ctrl K</kbd>
+          </div>
+        </div>
+      </div>
+      <div class="catalog-head">
+        <div><p class="eyebrow">Navegação</p><h2>Explorar procedimentos</h2></div>
+        <p class="count" id="results" role="status"></p>
+      </div>
+      <div id="filters" class="filters" aria-label="Filtrar por categoria"></div>
+      <div id="cards" class="card-grid"></div>
+    </section>
+    <section id="favorites" class="screen" aria-labelledby="favorites-title" hidden>
+      <div class="section-intro"><p class="eyebrow">Sua seleção</p><h1 id="favorites-title">Favoritos</h1><p>Seus procedimentos salvos ficam neste navegador.</p></div>
+      <div id="favorite-cards" class="card-grid"></div>
+    </section>
+    <section id="detail" class="screen" aria-labelledby="detail-title" hidden>
+      <a class="back" href="#catalogo">← Voltar ao catálogo</a>
+      <article id="article"></article>
+    </section>
+    <section id="assistant" class="screen" aria-labelledby="assistant-title" hidden>
+      <div class="section-intro"><p class="eyebrow">Respostas com fonte</p><h1 id="assistant-title">Assistente de processos</h1><p>Faça perguntas sobre o catálogo. O assistente seleciona trechos dos procedimentos de exemplo.</p></div>
+      <div class="assistant-layout">
+        <div class="chat">
+          <div class="chat-head"><span id="chat-icon" class="tile" aria-hidden="true"></span><div><strong>Assistente Atlas</strong><small>Busca local</small></div><button class="text-btn" id="reset-chat" type="button">Limpar conversa</button></div>
+          <div id="messages" class="messages" role="log" aria-live="polite" aria-label="Conversa"></div>
+          <form id="ask-form" class="ask-form">
+            <label class="sr" for="question">Sua pergunta</label>
+            <input id="question" maxlength="600" placeholder="Escreva uma pergunta sobre os processos…" autocomplete="off" required>
+            <button type="submit" class="primary">Perguntar</button>
+          </form>
+        </div>
+        <aside class="suggestions">
+          <p class="eyebrow">Experimente</p><h2>Perguntas de exemplo</h2>
+          <p>Teste um erro de digitação, uma expressão informal ou uma pergunta sem fonte.</p>
+          <div id="examples" class="examples"></div>
+        </aside>
+      </div>
+    </section>
+  </main>
+  <footer class="footer"><span>Atlas de Processos</span><span>Demonstração independente · Conteúdo sintético</span></footer>
+  <p id="announcement" class="sr" role="status"></p>
+  <script>'use strict';
+(() => {
+const categories = Object.freeze([
+  { id: 'atendimento', title: 'Atendimento', icon: 'chat', text: 'Abertura, acompanhamento e encerramento de chamados.' },
+  { id: 'acessos', title: 'Acessos', icon: 'key', text: 'Credenciais e permissões do ambiente de demonstração.' },
+  { id: 'processos', title: 'Processos', icon: 'book', text: 'Responsabilidade, revisão e documentação.' }
+]);
+
+// Todos os nomes, procedimentos e prazos abaixo foram criados para a demonstração.
+const articles = [
+  {
+    id: 'abrir-chamado', categoryId: 'atendimento', title: 'Abrir um chamado', icon: 'chat',
+    summary: 'Registre uma solicitação com contexto suficiente para a triagem.',
+    keywords: ['abrir chamado', 'criar ticket', 'registrar solicitação', 'protocolo'],
+    sections: [
+      { title: 'Como abrir o chamado', text: 'Abra a área Chamados Demo e selecione Nova solicitação. Informe a categoria, descreva o problema e guarde o protocolo fictício.' },
+      { title: 'Requisitos para a triagem', text: 'Inclua o assunto, o resultado esperado e a etapa em que ocorreu o problema. Use uma captura sintética se precisar mostrar um erro.' },
+      { title: 'Prazo da primeira análise', text: 'Na simulação, a primeira análise do chamado ocorre em até 8 horas úteis. Esse prazo começa após o registro da solicitação.' }
+    ]
+  },
+  {
+    id: 'acompanhar-chamado', categoryId: 'atendimento', title: 'Acompanhar um chamado', icon: 'clock',
+    summary: 'Consulte a situação e entenda em qual etapa está uma solicitação.',
+    keywords: ['acompanhar chamado', 'status do ticket', 'protocolo', 'andamento'],
+    sections: [
+      { title: 'Onde consultar o andamento', text: 'Em Chamados Demo, abra Minhas solicitações e procure pelo protocolo de exemplo. A linha do tempo exibe a última atualização.' },
+      { title: 'Como interpretar os status', text: 'Recebido significa que o registro está na fila. Em análise indica que a solicitação foi assumida. Concluído indica que a tratativa foi encerrada.' }
+    ]
+  },
+  {
+    id: 'encerrar-chamado', categoryId: 'atendimento', title: 'Encerrar um chamado', icon: 'check',
+    summary: 'Documente o resultado de uma tratativa e finalize o registro.',
+    keywords: ['encerrar chamado', 'fechar chamado', 'concluir ticket', 'resultado'],
+    sections: [
+      { title: 'Como encerrar a tratativa', text: 'Registre a solução de exemplo e confira se a solicitação foi respondida. Selecione Encerrar chamado e confirme o resultado.' },
+      { title: 'Critério de encerramento', text: 'O registro precisa conter a ação executada e o resultado observado. Se houver uma etapa pendente, mantenha o chamado em análise.' }
+    ]
+  },
+  {
+    id: 'redefinir-senha', categoryId: 'acessos', title: 'Redefinir a senha de acesso', icon: 'key',
+    summary: 'Recupere o acesso pelo fluxo fictício de redefinição de senha.',
+    keywords: ['redefinir senha', 'recuperar senha', 'esqueci a senha', 'resetar senha', 'credenciais'],
+    sections: [
+      { title: 'Como redefinir a senha', text: 'Na tela de acesso do ambiente fictício, selecione Esqueci minha senha. Informe o e-mail de teste e confirme a solicitação na tela.' },
+      { title: 'Prazo de validade do link', text: 'O link fictício de redefinição da senha vale por 18 minutos após a solicitação. Quando o prazo expirar, gere outro link de teste.' },
+      { title: 'Cuidados com credenciais', text: 'Nunca use senhas reais em uma demonstração. O exemplo descreve o fluxo e não envia mensagens.' }
+    ]
+  },
+  {
+    id: 'solicitar-acesso', categoryId: 'acessos', title: 'Solicitar acesso a um módulo', icon: 'shield',
+    summary: 'Peça a permissão mínima necessária para usar um módulo de teste.',
+    keywords: ['solicitar acesso', 'pedir acesso', 'liberar permissão', 'perfil', 'módulo'],
+    sections: [
+      { title: 'Requisitos da solicitação de acesso', text: 'Informe o módulo, o perfil de demonstração e a finalidade da permissão. Use apenas um identificador fictício para a pessoa solicitante.' },
+      { title: 'Como pedir acesso', text: 'Abra o formulário Acessos Demo, escolha o módulo e envie a solicitação para revisão simulada.' },
+      { title: 'Prazo de revisão', text: 'A revisão da solicitação de acesso leva até 12 horas úteis no ambiente fictício.' }
+    ]
+  },
+  {
+    id: 'transferir-responsavel', categoryId: 'processos', title: 'Transferir a responsabilidade', icon: 'swap',
+    summary: 'Reatribua uma solicitação sem perder o histórico da tratativa.',
+    keywords: ['transferir responsável', 'trocar de dono', 'mudar responsável', 'reatribuir solicitação'],
+    sections: [
+      { title: 'Como transferir a responsabilidade', text: 'Abra a solicitação fictícia, selecione Transferir e escolha um responsável de demonstração. Registre o motivo antes de confirmar.' },
+      { title: 'O que conferir na transferência', text: 'O novo responsável deve ter acesso ao módulo. O histórico permanece vinculado ao protocolo original.' }
+    ]
+  },
+  {
+    id: 'revisar-procedimento', categoryId: 'processos', title: 'Revisar um procedimento', icon: 'book',
+    summary: 'Valide uma atualização antes de publicá-la no catálogo.',
+    keywords: ['revisar procedimento', 'atualizar artigo', 'validar conteúdo', 'revisão de processo'],
+    sections: [
+      { title: 'Fluxo de revisão do procedimento', text: 'Duplique o conteúdo para um rascunho de demonstração. Revise etapas e exemplos, depois encaminhe o rascunho para uma segunda leitura.' },
+      { title: 'Requisitos para publicação', text: 'Informe o motivo da mudança e a versão de exemplo. Publique apenas após a revisão do rascunho.' }
+    ]
+  },
+  {
+    id: 'registrar-evidencia', categoryId: 'processos', title: 'Registrar uma evidência', icon: 'file',
+    summary: 'Adicione referências de teste que permitam reproduzir uma situação.',
+    keywords: ['registrar evidência', 'anexar evidência', 'captura sintética', 'documentar teste'],
+    sections: [
+      { title: 'Como documentar o teste', text: 'Descreva a etapa executada, o resultado observado e o resultado esperado. Inclua uma referência fictícia para relacionar a evidência à solicitação.' },
+      { title: 'Requisitos da evidência', text: 'Use um arquivo sintético com legenda e texto alternativo. Não inclua dados pessoais, credenciais ou conteúdo operacional real.' }
+    ]
+  }
+];
+
+/* Núcleo adaptado do buscador local: normalização, aliases, ranking e seleção extrativa. */
+function pontuarConteudoAtlas(
+  artigo,
+  categorias,
+  consulta,
+  perguntaAtual,
+  termosConsulta,
+  termosPergunta,
+  inteligenciaConsulta
+) {
+  artigo = artigo || {};
+  inteligenciaConsulta = inteligenciaConsulta || {};
+
+  const evidencias = [];
+
+  function registrarEvidencia(rotulo) {
+    rotulo = String(rotulo || '').trim();
+
+    if (
+      rotulo &&
+      evidencias.indexOf(rotulo) === -1
+    ) {
+      evidencias.push(rotulo);
+    }
+  }
+
+  const tituloOriginal = String(
+    artigo.title || ''
+  ).trim();
+
+  const titulo = normalizarTextoAtlas(
+    tituloOriginal
+  );
+
+  const categoriaId = String(
+    artigo.categoryId || ''
+  ).trim();
+
+  const categoriaTituloOriginal = String(
+    categorias[categoriaId] || ''
+  ).trim();
+
+  const categoriaTitulo = normalizarTextoAtlas(
+    categoriaTituloOriginal
+  );
+
+  const palavrasChaveOriginais = Array.isArray(
+    artigo.keywords
+  )
+    ? artigo.keywords.join(' ')
+    : String(artigo.keywords || '');
+
+  const palavrasChave = normalizarTextoAtlas(
+    palavrasChaveOriginais
+  );
+
+  const conteudoOriginal = converterHtmlParaTextoAtlas(
+    artigo.content
+  );
+
+  const conteudo = normalizarTextoAtlas(
+    conteudoOriginal
+  );
+
+  let pontuacao = 0;
+
+  if (titulo === perguntaAtual) {
+    pontuacao += 150;
+    registrarEvidencia('TÍTULO_EXATO');
+  } else if (titulo === consulta) {
+    pontuacao += 140;
+    registrarEvidencia('TÍTULO_EXATO_EXPANDIDO');
+  }
+
+  if (
+    perguntaAtual.length >= 4 &&
+    titulo.indexOf(perguntaAtual) !== -1
+  ) {
+    pontuacao += 85;
+    registrarEvidencia('PERGUNTA_NO_TÍTULO');
+  }
+
+  if (
+    consulta.length >= 4 &&
+    titulo.indexOf(consulta) !== -1
+  ) {
+    pontuacao += 70;
+    registrarEvidencia('CONSULTA_NO_TÍTULO');
+  }
+
+  if (
+    titulo.length >= 4 &&
+    consulta.indexOf(titulo) !== -1
+  ) {
+    pontuacao += 60;
+    registrarEvidencia('TÍTULO_CONTIDO_NA_CONSULTA');
+  }
+
+  if (
+    perguntaAtual.length >= 4 &&
+    palavrasChave.indexOf(perguntaAtual) !== -1
+  ) {
+    pontuacao += 65;
+    registrarEvidencia('PERGUNTA_NAS_PALAVRAS_CHAVE');
+  }
+
+  if (
+    consulta.length >= 4 &&
+    palavrasChave.indexOf(consulta) !== -1
+  ) {
+    pontuacao += 55;
+    registrarEvidencia('CONSULTA_NAS_PALAVRAS_CHAVE');
+  }
+
+  if (
+    perguntaAtual.length >= 4 &&
+    conteudo.indexOf(perguntaAtual) !== -1
+  ) {
+    pontuacao += 38;
+    registrarEvidencia('PERGUNTA_NO_CONTEÚDO');
+  }
+
+  if (
+    consulta.length >= 4 &&
+    conteudo.indexOf(consulta) !== -1
+  ) {
+    pontuacao += 28;
+    registrarEvidencia('CONSULTA_NO_CONTEÚDO');
+  }
+
+  const frasesExpandidas = Array.isArray(
+    inteligenciaConsulta.frasesExpandidas
+  )
+    ? inteligenciaConsulta.frasesExpandidas
+    : [];
+
+  frasesExpandidas.forEach(function(frase) {
+    frase = normalizarTextoAtlas(frase);
+
+    if (!frase || frase.length < 4) {
+      return;
+    }
+
+    if (titulo.indexOf(frase) !== -1) {
+      pontuacao += 34;
+      registrarEvidencia('SINÔNIMO_NO_TÍTULO');
+    }
+
+    if (palavrasChave.indexOf(frase) !== -1) {
+      pontuacao += 24;
+      registrarEvidencia('SINÔNIMO_NAS_PALAVRAS_CHAVE');
+    }
+
+    if (conteudo.indexOf(frase) !== -1) {
+      pontuacao += 12;
+      registrarEvidencia('SINÔNIMO_NO_CONTEÚDO');
+    }
+  });
+
+  const termosUnicos = unirTermosAtlas(
+    termosConsulta,
+    termosPergunta
+  ).slice(
+    0,
+    RETRIEVAL.MAX_TERMOS_ESSENCIAIS
+  );
+
+  let termosEncontrados = 0;
+
+  termosUnicos.forEach(function(termo) {
+    const variacoes = obterVariacoesTermoAtlas(termo);
+
+    let encontrou = false;
+    let encontrouTitulo = false;
+    let encontrouPalavraChave = false;
+    let encontrouCategoria = false;
+    let maiorQuantidadeConteudo = 0;
+
+    variacoes.forEach(function(variacao) {
+      if (titulo.indexOf(variacao) !== -1) {
+        encontrouTitulo = true;
+      }
+
+      if (palavrasChave.indexOf(variacao) !== -1) {
+        encontrouPalavraChave = true;
+      }
+
+      if (categoriaTitulo.indexOf(variacao) !== -1) {
+        encontrouCategoria = true;
+      }
+
+      maiorQuantidadeConteudo = Math.max(
+        maiorQuantidadeConteudo,
+        contarOcorrenciasAtlas(
+          conteudo,
+          variacao
+        )
+      );
+    });
+
+    if (encontrouTitulo) {
+      pontuacao += 20;
+      encontrou = true;
+      registrarEvidencia('TERMO_NO_TÍTULO');
+    }
+
+    if (encontrouPalavraChave) {
+      pontuacao += 14;
+      encontrou = true;
+      registrarEvidencia('TERMO_NAS_PALAVRAS_CHAVE');
+    }
+
+    if (encontrouCategoria) {
+      pontuacao += 7;
+      encontrou = true;
+      registrarEvidencia('TERMO_NA_CATEGORIA');
+    }
+
+    if (maiorQuantidadeConteudo > 0) {
+      pontuacao +=
+        Math.min(
+          maiorQuantidadeConteudo,
+          4
+        ) * 3;
+
+      encontrou = true;
+    }
+
+    if (encontrou) {
+      termosEncontrados++;
+    }
+  });
+
+  const bigramas = criarBigramasAtlas(
+    termosUnicos
+  );
+
+  bigramas.forEach(function(bigrama) {
+    if (titulo.indexOf(bigrama) !== -1) {
+      pontuacao += 22;
+      registrarEvidencia('EXPRESSÃO_NO_TÍTULO');
+    }
+
+    if (palavrasChave.indexOf(bigrama) !== -1) {
+      pontuacao += 16;
+      registrarEvidencia('EXPRESSÃO_NAS_PALAVRAS_CHAVE');
+    }
+
+    if (conteudo.indexOf(bigrama) !== -1) {
+      pontuacao += 9;
+    }
+  });
+
+  const cobertura = termosUnicos.length > 0
+    ? termosEncontrados / termosUnicos.length
+    : 0;
+
+  if (
+    termosUnicos.length >= 3 &&
+    cobertura < 0.25
+  ) {
+    pontuacao -= 22;
+  }
+
+  if (
+    conteudoOriginal.length > 12000 &&
+    evidencias.indexOf('TERMO_NO_TÍTULO') === -1 &&
+    evidencias.indexOf('TERMO_NAS_PALAVRAS_CHAVE') === -1 &&
+    evidencias.indexOf('SINÔNIMO_NO_TÍTULO') === -1
+  ) {
+    pontuacao -= 12;
+  }
+
+  const selecaoTrecho = criarTrechoInteligenteAtlas(
+    artigo.content,
+    conteudoOriginal,
+    perguntaAtual,
+    termosUnicos,
+    inteligenciaConsulta
+  );
+
+  if (selecaoTrecho.pontuacao > 0) {
+    pontuacao += Math.min(
+      45,
+      Math.round(selecaoTrecho.pontuacao * 0.8)
+    );
+    registrarEvidencia('SEÇÃO_RELEVANTE_LOCALIZADA');
+  }
+
+  if (pontuacao <= 0) {
+    return null;
+  }
+
+  return {
+    id: String(
+      artigo.id || ''
+    ).trim(),
+
+    titulo: tituloOriginal,
+    categoriaId: categoriaId,
+    categoriaTitulo: categoriaTituloOriginal,
+    pontuacao: pontuacao,
+    cobertura: cobertura,
+    trecho: selecaoTrecho.trecho,
+    resumoBreve: selecaoTrecho.resumoBreve,
+    secaoPrincipal: selecaoTrecho.secaoPrincipal,
+    secoesRelacionadas: selecaoTrecho.secoesRelacionadas,
+    pontuacaoTrecho: selecaoTrecho.pontuacao,
+    termosEncontrados: termosEncontrados,
+    totalTermos: termosUnicos.length,
+    evidencias: evidencias.slice(0, 8),
+    intencaoCorrespondente: String(
+      inteligenciaConsulta.intencao &&
+      inteligenciaConsulta.intencao.id ||
+      'ORIENTACAO_GERAL'
+    )
+  };
+}
+
+function unirTermosAtlas(listaA, listaB) {
+  const mapa = Object.create(null);
+
+  return []
+    .concat(listaA || [], listaB || [])
+    .filter(function(termo) {
+      termo = String(termo || '').trim();
+
+      if (!termo || mapa[termo]) {
+        return false;
+      }
+
+      mapa[termo] = true;
+      return true;
+    });
+}
+
+function contarOcorrenciasAtlas(texto, termo) {
+  texto = String(texto || '');
+  termo = String(termo || '');
+
+  if (!texto || !termo) {
+    return 0;
+  }
+
+  let quantidade = 0;
+  let inicio = 0;
+
+  while (true) {
+    const indice = texto.indexOf(
+      termo,
+      inicio
+    );
+
+    if (indice === -1) {
+      break;
+    }
+
+    quantidade++;
+    inicio = indice + termo.length;
+  }
+
+  return quantidade;
+}
+
+function criarBigramasAtlas(termos) {
+  const lista = Array.isArray(termos)
+    ? termos
+    : [];
+
+  const bigramas = [];
+
+  for (let i = 0; i < lista.length - 1; i++) {
+    bigramas.push(
+      lista[i] + ' ' + lista[i + 1]
+    );
+  }
+
+  return bigramas;
+}
+
+function analisarConsultaAtlas(pergunta, consultaBusca) {
+  const perguntaBase = normalizarTextoAtlas(
+    pergunta
+  );
+
+  const consultaBase = normalizarTextoAtlas(
+    consultaBusca || pergunta
+  );
+
+  const correcao = corrigirErrosDigitacaoAtlas(
+    consultaBase
+  );
+
+  const expansao = expandirConsultaAtlas(
+    correcao.texto
+  );
+
+  const intencao = detectarIntencaoAtlas(
+    correcao.texto || perguntaBase,
+    expansao.textoExpandido
+  );
+
+  const entidades = extrairEntidadesAtlas(
+    expansao.textoExpandido
+  );
+
+  const termosOriginais = extrairTermosAtlas(
+    correcao.texto
+  );
+
+  let termosEssenciais = unirTermosAtlas(
+    termosOriginais,
+    expansao.termosCanonicos
+  );
+
+  entidades.forEach(function(entidade) {
+    termosEssenciais = unirTermosAtlas(
+      termosEssenciais,
+      extrairTermosAtlas(
+        entidade.termosBusca
+      )
+    );
+  });
+
+  termosEssenciais = termosEssenciais.slice(
+    0,
+    RETRIEVAL.MAX_TERMOS_ESSENCIAIS
+  );
+
+  let termosBusca = unirTermosAtlas(
+    termosEssenciais,
+    extrairTermosAtlas(
+      intencao.termosBusca
+    )
+  );
+
+  termosBusca = termosBusca.slice(
+    0,
+    RETRIEVAL.MAX_TERMOS_BUSCA
+  );
+
+  const partesConsulta = [
+    correcao.texto,
+    expansao.termosCanonicos.join(' '),
+    intencao.termosBusca,
+    entidades.map(function(entidade) {
+      return entidade.termosBusca;
+    }).join(' ')
+  ]
+    .map(function(item) {
+      return normalizarTextoAtlas(item);
+    })
+    .filter(Boolean);
+
+  const consultaExpandida = limitarTextoAtlas(
+    unirTextosUnicosAtlas(
+      partesConsulta
+    ).join(' '),
+    1400
+  );
+
+  return {
+    versao: RETRIEVAL.VERSAO,
+    consultaOriginalNormalizada: perguntaBase,
+    consultaInterpretada: correcao.texto || perguntaBase,
+    consultaExpandida: consultaExpandida,
+    intencao: intencao,
+    entidades: entidades,
+    termosOriginais: termosOriginais,
+    termosEssenciais: termosEssenciais,
+    termosBusca: termosBusca,
+    frasesExpandidas: expansao.frasesExpandidas,
+    aliasesDetectados: expansao.aliasesDetectados,
+    correcoesAplicadas: correcao.correcoes
+  };
+}
+
+function corrigirErrosDigitacaoAtlas(texto) {
+  const normalizado = normalizarTextoAtlas(
+    texto
+  );
+
+  if (!normalizado) {
+    return {
+      texto: '',
+      correcoes: []
+    };
+  }
+
+  const vocabulario = RETRIEVAL
+    .VOCABULARIO
+    .map(function(item) {
+      return normalizarTextoAtlas(item);
+    });
+
+  const mapaVocabulario = Object.create(null);
+
+  vocabulario.forEach(function(item) {
+    mapaVocabulario[item] = true;
+  });
+
+  const correcoes = [];
+
+  const tokens = normalizado
+    .split(' ')
+    .map(function(token) {
+      if (
+        !token ||
+        token.length < 4 ||
+        /\d/.test(token) ||
+        mapaVocabulario[token] ||
+        correcoes.length >=
+          RETRIEVAL.MAX_CORRECOES_DIGITACAO
+      ) {
+        return token;
+      }
+
+      let melhor = '';
+      let melhorDistancia = 999;
+      let segundaDistancia = 999;
+
+      vocabulario.forEach(function(candidato) {
+        if (
+          !candidato ||
+          candidato.charAt(0) !== token.charAt(0) ||
+          Math.abs(candidato.length - token.length) > 2
+        ) {
+          return;
+        }
+
+        const distancia = distanciaEdicaoAtlas(
+          token,
+          candidato
+        );
+
+        if (distancia < melhorDistancia) {
+          segundaDistancia = melhorDistancia;
+          melhorDistancia = distancia;
+          melhor = candidato;
+        } else if (distancia < segundaDistancia) {
+          segundaDistancia = distancia;
+        }
+      });
+
+      const limite = token.length <= 5
+        ? 1
+        : 2;
+
+      if (
+        melhor &&
+        melhorDistancia <= limite &&
+        melhorDistancia < segundaDistancia &&
+        melhor !== token
+      ) {
+        correcoes.push({
+          de: token,
+          para: melhor
+        });
+
+        return melhor;
+      }
+
+      return token;
+    });
+
+  return {
+    texto: tokens.join(' ').trim(),
+    correcoes: correcoes
+  };
+}
+
+function distanciaEdicaoAtlas(textoA, textoB) {
+  textoA = String(textoA || '');
+  textoB = String(textoB || '');
+
+  if (textoA === textoB) {
+    return 0;
+  }
+
+  if (!textoA) {
+    return textoB.length;
+  }
+
+  if (!textoB) {
+    return textoA.length;
+  }
+
+  const anterior = [];
+  const atual = [];
+
+  for (let j = 0; j <= textoB.length; j++) {
+    anterior[j] = j;
+  }
+
+  for (let i = 1; i <= textoA.length; i++) {
+    atual[0] = i;
+
+    for (let j = 1; j <= textoB.length; j++) {
+      const custo = textoA.charAt(i - 1) ===
+        textoB.charAt(j - 1)
+          ? 0
+          : 1;
+
+      atual[j] = Math.min(
+        atual[j - 1] + 1,
+        anterior[j] + 1,
+        anterior[j - 1] + custo
+      );
+    }
+
+    for (let j = 0; j <= textoB.length; j++) {
+      anterior[j] = atual[j];
+    }
+  }
+
+  return anterior[textoB.length];
+}
+
+function expandirConsultaAtlas(texto) {
+  const base = normalizarTextoAtlas(
+    texto
+  );
+
+  const termosCanonicos = [];
+  const frasesExpandidas = [];
+  const aliasesDetectados = [];
+
+  base.split(' ').forEach(function(token) {
+    const expansao = Object.hasOwn(RETRIEVAL.ABREVIACOES, token) ? RETRIEVAL.ABREVIACOES[token] : "";
+
+    if (expansao) {
+      termosCanonicos.push(expansao);
+      frasesExpandidas.push(expansao);
+      aliasesDetectados.push(
+        'ABREVIACAO_' + token.toUpperCase()
+      );
+    }
+  });
+
+  RETRIEVAL.ALIASES.forEach(
+    function(grupo) {
+      const encontrou = grupo.variants.some(
+        function(variante) {
+          const normalizada = normalizarTextoAtlas(
+            variante
+          );
+
+          return normalizada && contemTermo(base, normalizada);
+        }
+      );
+
+      if (encontrou) {
+        termosCanonicos.push(grupo.canonical);
+        frasesExpandidas.push(grupo.canonical);
+        aliasesDetectados.push(grupo.id);
+      }
+    }
+  );
+
+  const canonicosUnicos = unirTextosUnicosAtlas(
+    termosCanonicos
+  );
+
+  return {
+    textoBase: base,
+    textoExpandido: [
+      base,
+      canonicosUnicos.join(' ')
+    ].filter(Boolean).join(' ').trim(),
+    termosCanonicos: extrairTermosAtlas(
+      canonicosUnicos.join(' ')
+    ),
+    frasesExpandidas: unirTextosUnicosAtlas(
+      frasesExpandidas
+    ),
+    aliasesDetectados: unirTextosUnicosAtlas(
+      aliasesDetectados
+    )
+  };
+}
+
+function detectarIntencaoAtlas(
+  perguntaNormalizada,
+  consultaExpandida
+) {
+  const texto = normalizarTextoAtlas(
+    perguntaNormalizada + ' ' + consultaExpandida
+  );
+
+  const definicoes = [
+    {
+      id: 'PRAZO',
+      titulo: 'Prazo',
+      padrao: /\b(prazo|quanto tempo|quantos dias|quando ocorre|antecedencia|validade|demora)\b/,
+      termosBusca: 'prazo antecedencia dias horas validade data retorno'
+    },
+    {
+      id: 'DOCUMENTOS',
+      titulo: 'Documentos e requisitos',
+      padrao: /\b(documento|documentos|o que precisa|quais dados|comprovante|formulario|requisitos)\b/,
+      termosBusca: 'documentos requisitos comprovante formulario dados necessarios'
+    },
+    {
+      id: 'CANAL',
+      titulo: 'Canal de atendimento',
+      padrao: /\b(onde solicitar|como solicitar|qual canal|telefone|whatsapp|email|e mail|contato)\b/,
+      termosBusca: 'canal contato telefone whatsapp email aplicativo portal onde solicitar'
+    },
+    {
+      id: 'VALOR_TAXA',
+      titulo: 'Valor ou taxa',
+      padrao: /\b(valor|preco|custo|quanto custa|taxa|percentual|porcentagem)\b/,
+      termosBusca: 'valor preco custo taxa percentual pagamento'
+    },
+    {
+      id: 'CAPACIDADE',
+      titulo: 'Capacidade',
+      padrao: /\b(capacidade|quantas pessoas|quantos hospedes|ocupacao|pessoas cabem)\b/,
+      termosBusca: 'capacidade ocupacao hospedes pessoas apartamento unidade'
+    },
+    {
+      id: 'STATUS_PREVISAO',
+      titulo: 'Status ou previsão',
+      padrao: /\b(status|previsao|quando inaugura|quando fica pronto|entrega|inauguracao|inicio da operacao)\b/,
+      termosBusca: 'status previsao entrega inauguracao inicio operacao cronograma'
+    },
+    {
+      id: 'ELEGIBILIDADE',
+      titulo: 'Condições e elegibilidade',
+      padrao: /\b(pode|posso|permitido|elegivel|condicao|condicoes|requisito|adimplente)\b/,
+      termosBusca: 'condicoes elegibilidade permitido adimplencia requisitos'
+    },
+    {
+      id: 'PROCEDIMENTO',
+      titulo: 'Como proceder',
+      padrao: /\b(como faco|como fazer|como abro|como abrir|como acompanhar|como redefinir|como reseto|como solicitar|como emito|como emitir|emitir|procedimento|passo a passo|fluxo|o que devo fazer)\b/,
+      termosBusca: 'procedimento fluxo etapas como solicitar orientacao operacional'
+    },
+    {
+      id: 'RESUMO_PROCESSO',
+      titulo: 'Resumo do processo',
+      padrao: /\b(resumo|resumir|visao geral|me fale sobre|explique o processo|breve resumo)\b/,
+      termosBusca: 'resumo finalidade apresentacao informacoes gerais ponto de atencao'
+    },
+    {
+      id: 'CONCEITO',
+      titulo: 'Conceito',
+      padrao: /\b(o que e|o que significa|conceito|definicao|para que serve)\b/,
+      termosBusca: 'o que e conceito definicao finalidade'
+    },
+    {
+      id: 'REGRA',
+      titulo: 'Regra operacional',
+      padrao: /\b(regra|regras|pode ou nao|restricao|obrigacao|obrigatorio|proibido)\b/,
+      termosBusca: 'regras restricoes obrigacoes ponto de atencao condicoes'
+    }
+  ];
+
+  for (
+    let indice = 0;
+    indice < definicoes.length;
+    indice++
+  ) {
+    const item = definicoes[indice];
+
+    if (item.padrao.test(texto)) {
+      return {
+        id: item.id,
+        titulo: item.titulo,
+        termosBusca: item.termosBusca
+      };
+    }
+  }
+
+  return {
+    id: 'ORIENTACAO_GERAL',
+    titulo: 'Orientação geral',
+    termosBusca: 'orientacao processo regra ponto de atencao'
+  };
+}
+
+function unirTextosUnicosAtlas(lista) {
+  const mapa = Object.create(null);
+
+  return (lista || [])
+    .map(function(item) {
+      return String(item || '').trim();
+    })
+    .filter(function(item) {
+      const chave = normalizarTextoAtlas(item);
+
+      if (!chave || mapa[chave]) {
+        return false;
+      }
+
+      mapa[chave] = true;
+      return true;
+    });
+}
+
+function extrairSecoesHtmlAtlas(html, textoFallback) {
+  let fonte = String(html || '')
+    .replace(/<script[\s\S]*?<\/script>/gi, ' ')
+    .replace(/<style[\s\S]*?<\/style>/gi, ' ');
+
+  const secoes = [];
+  const padraoTitulo = /<h([1-6])[^>]*>([\s\S]*?)<\/h\1>/gi;
+
+  let ultimoIndice = 0;
+  let tituloAtual = 'Apresentação';
+  let nivelAtual = 0;
+  let correspondencia;
+
+  function adicionarSecao(conteudoBruto) {
+    const texto = converterHtmlParaTextoAtlas(
+      conteudoBruto
+    );
+
+    if (!texto || texto.length < 8) {
+      return;
+    }
+
+    secoes.push({
+      titulo: tituloAtual,
+      nivel: nivelAtual,
+      texto: texto,
+      ordem: secoes.length
+    });
+  }
+
+  while (
+    (correspondencia = padraoTitulo.exec(fonte)) !== null
+  ) {
+    adicionarSecao(
+      fonte.substring(
+        ultimoIndice,
+        correspondencia.index
+      )
+    );
+
+    tituloAtual = converterHtmlParaTextoAtlas(
+      correspondencia[2]
+    ) || 'Seção';
+
+    nivelAtual = Number(
+      correspondencia[1] || 0
+    );
+
+    ultimoIndice = padraoTitulo.lastIndex;
+  }
+
+  adicionarSecao(
+    fonte.substring(ultimoIndice)
+  );
+
+  if (!secoes.length) {
+    const texto = String(
+      textoFallback ||
+      converterHtmlParaTextoAtlas(fonte)
+    ).trim();
+
+    if (texto) {
+      secoes.push({
+        titulo: 'Conteúdo do processo',
+        nivel: 0,
+        texto: texto,
+        ordem: 0
+      });
+    }
+  }
+
+  return secoes;
+}
+
+function criarTrechoInteligenteAtlas(
+  html,
+  textoFallback,
+  perguntaAtual,
+  termos,
+  inteligenciaConsulta
+) {
+  inteligenciaConsulta = inteligenciaConsulta || {};
+
+  const secoes = extrairSecoesHtmlAtlas(
+    html,
+    textoFallback
+  );
+
+  if (!secoes.length) {
+    return {
+      trecho: '',
+      resumoBreve: '',
+      secaoPrincipal: '',
+      secoesRelacionadas: [],
+      pontuacao: 0
+    };
+  }
+
+  const avaliadas = secoes.map(function(secao) {
+    return {
+      secao: secao,
+      pontuacao: pontuarSecaoAtlas(
+        secao,
+        perguntaAtual,
+        termos,
+        inteligenciaConsulta
+      )
+    };
+  });
+
+  let melhores = avaliadas
+    .filter(function(item) {
+      return item.pontuacao > 0;
+    })
+    .sort(function(a, b) {
+      if (b.pontuacao !== a.pontuacao) {
+        return b.pontuacao - a.pontuacao;
+      }
+
+      return a.secao.ordem - b.secao.ordem;
+    })
+    .slice(
+      0,
+      RETRIEVAL.MAX_SECOES_RESPOSTA
+    );
+
+  if (!melhores.length) {
+    const fallback = criarTrechoRelevanteAtlas(
+      textoFallback,
+      perguntaAtual,
+      termos
+    );
+
+    return {
+      trecho: fallback.trecho,
+      resumoBreve: construirResumoBreveAtlas(
+        fallback.trecho,
+        perguntaAtual,
+        termos,
+        inteligenciaConsulta
+      ),
+      secaoPrincipal: '',
+      secoesRelacionadas: [],
+      pontuacao: fallback.pontuacao
+    };
+  }
+
+  const principal = melhores[0];
+
+  const blocos = melhores.map(function(item) {
+    return [
+      'Seção: ' + item.secao.titulo,
+      limitarTextoAtlas(
+        item.secao.texto,
+        900
+      )
+    ].join('\n');
+  });
+
+  const trecho = limitarTextoAtlas(
+    blocos.join('\n\n'),
+    LIMITES.MAX_CARACTERES_TRECHO_RESPOSTA
+  );
+
+  const resumoBreve = construirResumoBreveAtlas(
+    principal.secao.texto,
+    perguntaAtual,
+    termos,
+    inteligenciaConsulta
+  );
+
+  return {
+    trecho: trecho,
+    resumoBreve: resumoBreve,
+    secaoPrincipal: principal.secao.titulo,
+    secoesRelacionadas: melhores.map(function(item) {
+      return item.secao.titulo;
+    }),
+    pontuacao: principal.pontuacao
+  };
+}
+
+function pontuarSecaoAtlas(
+  secao,
+  perguntaAtual,
+  termos,
+  inteligenciaConsulta
+) {
+  secao = secao || {};
+  inteligenciaConsulta = inteligenciaConsulta || {};
+
+  const titulo = normalizarTextoAtlas(
+    secao.titulo
+  );
+
+  const texto = normalizarTextoAtlas(
+    secao.texto
+  );
+
+  const pergunta = normalizarTextoAtlas(
+    perguntaAtual
+  );
+
+  const intencao = inteligenciaConsulta.intencao || {};
+  const termosIntencao = extrairTermosAtlas(
+    intencao.termosBusca || ''
+  );
+
+  let pontuacao = 0;
+
+  if (
+    pergunta.length >= 4 &&
+    titulo.indexOf(pergunta) !== -1
+  ) {
+    pontuacao += 45;
+  }
+
+  if (
+    pergunta.length >= 4 &&
+    texto.indexOf(pergunta) !== -1
+  ) {
+    pontuacao += 25;
+  }
+
+  (termos || []).forEach(function(termo) {
+    const variacoes = obterVariacoesTermoAtlas(
+      termo
+    );
+
+    variacoes.forEach(function(variacao) {
+      if (titulo.indexOf(variacao) !== -1) {
+        pontuacao += 10;
+      }
+
+      if (texto.indexOf(variacao) !== -1) {
+        pontuacao += 3;
+      }
+    });
+  });
+
+  termosIntencao.forEach(function(termo) {
+    if (titulo.indexOf(termo) !== -1) {
+      pontuacao += 12;
+    }
+
+    if (texto.indexOf(termo) !== -1) {
+      pontuacao += 4;
+    }
+  });
+
+  const frasesExpandidas = Array.isArray(
+    inteligenciaConsulta.frasesExpandidas
+  )
+    ? inteligenciaConsulta.frasesExpandidas
+    : [];
+
+  frasesExpandidas.forEach(function(frase) {
+    frase = normalizarTextoAtlas(frase);
+
+    if (titulo.indexOf(frase) !== -1) {
+      pontuacao += 20;
+    }
+
+    if (texto.indexOf(frase) !== -1) {
+      pontuacao += 8;
+    }
+  });
+
+  if (
+    /\b(ponto de atencao|atencao|orientacao operacional|fluxo|prazo|documentos|requisitos|condicoes)\b/.test(
+      titulo + ' ' + texto
+    )
+  ) {
+    pontuacao += 5;
+  }
+
+  if (
+    intencao.id === 'PRAZO' &&
+    /\b(dia|dias|hora|horas|mes|meses|ano|anos|antecedencia|validade|d\s*\d+)\b/.test(texto)
+  ) {
+    pontuacao += 18;
+  }
+
+  if (
+    intencao.id === 'DOCUMENTOS' &&
+    /\b(documento|documentos|comprovante|formulario|referencia|solicitacao)\b/.test(texto)
+  ) {
+    pontuacao += 18;
+  }
+
+  if (
+    intencao.id === 'CANAL' &&
+    /\b(email|e mail|telefone|whatsapp|0800|aplicativo|portal|contato)\b/.test(texto)
+  ) {
+    pontuacao += 18;
+  }
+
+  if (
+    intencao.id === 'VALOR_TAXA' &&
+    /\b(valor|taxa|preco|custo|percentual|porcentagem|r\$)\b/.test(texto)
+  ) {
+    pontuacao += 18;
+  }
+
+  return pontuacao;
+}
+
+function construirResumoBreveAtlas(
+  texto,
+  perguntaAtual,
+  termos,
+  inteligenciaConsulta
+) {
+  texto = String(texto || '')
+    .replace(/[ \t]+/g, ' ')
+    .replace(/\n\s*\n+/g, '\n')
+    .trim();
+
+  if (!texto) {
+    return '';
+  }
+
+  inteligenciaConsulta = inteligenciaConsulta || {};
+
+  const intencao = inteligenciaConsulta.intencao || {
+    id: 'ORIENTACAO_GERAL',
+    termosBusca: ''
+  };
+
+  const termosIntencao = extrairTermosAtlas(
+    intencao.termosBusca || ''
+  );
+
+  const unidades = [];
+
+  texto.split(/\n+/).forEach(function(linha) {
+    linha = String(linha || '').trim();
+
+    if (!linha) {
+      return;
+    }
+
+    const partes = linha.match(
+      /[^.!?;]+[.!?;]?/g
+    ) || [linha];
+
+    partes.forEach(function(parte) {
+      parte = parte.trim();
+
+      if (
+        parte.length >= 12 &&
+        parte.length <= 520
+      ) {
+        unidades.push(parte);
+      }
+    });
+  });
+
+  const avaliadas = unidades.map(function(unidade, indice) {
+    const normalizada = normalizarTextoAtlas(
+      unidade
+    );
+
+    let pontuacao = Math.max(
+      0,
+      4 - indice * 0.15
+    );
+
+    (termos || []).forEach(function(termo) {
+      const encontrou = obterVariacoesTermoAtlas(
+        termo
+      ).some(function(variacao) {
+        return normalizada.indexOf(variacao) !== -1;
+      });
+
+      if (encontrou) {
+        pontuacao += 4;
+      }
+    });
+
+    termosIntencao.forEach(function(termo) {
+      if (normalizada.indexOf(termo) !== -1) {
+        pontuacao += 5;
+      }
+    });
+
+    if (
+      /\b(ponto de atencao|atencao|nao deve|deve|obrigatorio|necessario|prazo|canal|documento)\b/.test(
+        normalizada
+      )
+    ) {
+      pontuacao += 6;
+    }
+
+    if (
+      intencao.id === 'PROCEDIMENTO' &&
+      /\b(acessa|seleciona|realiza|solicita|formaliza|confirma|envia|aguarda|acompanha|deve)\b/.test(
+        normalizada
+      )
+    ) {
+      pontuacao += 7;
+    }
+
+    return {
+      indice: indice,
+      texto: unidade,
+      pontuacao: pontuacao
+    };
+  });
+
+  const ordenadasPorRelevancia = avaliadas
+    .sort(function(a, b) {
+      if (b.pontuacao !== a.pontuacao) {
+        return b.pontuacao - a.pontuacao;
+      }
+
+      return a.indice - b.indice;
+    });
+
+  const melhorPontuacao = ordenadasPorRelevancia.length
+    ? Number(ordenadasPorRelevancia[0].pontuacao || 0)
+    : 0;
+
+  const fatorCorte = intencao.id === 'PROCEDIMENTO'
+    ? 0.35
+    : (
+        intencao.id === 'RESUMO_PROCESSO' ||
+        intencao.id === 'CONCEITO'
+          ? 0.45
+          : 0.55
+      );
+
+  const limiteFrases = intencao.id === 'PROCEDIMENTO'
+    ? RETRIEVAL.MAX_FRASES_RESUMO
+    : Math.min(
+        4,
+        RETRIEVAL.MAX_FRASES_RESUMO
+      );
+
+  let selecionadas = ordenadasPorRelevancia
+    .filter(function(item, indice) {
+      return (
+        indice === 0 ||
+        Number(item.pontuacao || 0) >=
+          melhorPontuacao * fatorCorte
+      );
+    })
+    .slice(
+      0,
+      limiteFrases
+    )
+    .sort(function(a, b) {
+      return a.indice - b.indice;
+    });
+
+  if (!selecionadas.length && avaliadas.length) {
+    selecionadas = avaliadas.slice(0, 3);
+  }
+
+  const mapa = Object.create(null);
+
+  const linhas = selecionadas
+    .filter(function(item) {
+      const chave = normalizarTextoAtlas(
+        item.texto
+      );
+
+      if (!chave || mapa[chave]) {
+        return false;
+      }
+
+      mapa[chave] = true;
+      return true;
+    })
+    .map(function(item) {
+      const prefixo = intencao.id === 'PROCEDIMENTO'
+        ? '• '
+        : '';
+
+      return prefixo + item.texto;
+    });
+
+  return limitarTextoAtlas(
+    linhas.join('\n'),
+    RETRIEVAL.MAX_CARACTERES_RESUMO
+  );
+}
+
+function normalizarTextoAtlas(texto) {
+  return String(
+    texto || ''
+  )
+    .toLowerCase()
+    .normalize('NFD')
+    .replace(/[\u0300-\u036f]/g, '')
+    .replace(/[^a-z0-9\s]/g, ' ')
+    .replace(/\s+/g, ' ')
+    .trim();
+}
+
+function extrairTermosAtlas(consulta) {
+  const stopwords = {
+    a: true,
+    ao: true,
+    aos: true,
+    as: true,
+    com: true,
+    como: true,
+    da: true,
+    das: true,
+    de: true,
+    do: true,
+    dos: true,
+    e: true,
+    em: true,
+    eu: true,
+    me: true,
+    na: true,
+    nas: true,
+    no: true,
+    nos: true,
+    o: true,
+    os: true,
+    para: true,
+    por: true,
+    qual: true,
+    quais: true,
+    que: true,
+    um: true,
+    uma: true,
+    onde: true,
+    preciso: true,
+    quero: true,
+    tem: true,
+    fazer: true,
+    faco: true,
+    funciona: true,
+    fala: true,
+    sobre: true,
+    seria: true,
+    pode: true,
+    posso: true,
+    devo: true,
+    gostaria: true,
+    favor: true,
+    pergunta: true,
+    complementar: true
+  };
+
+  const mapa = Object.create(null);
+
+  return String(
+    consulta || ''
+  )
+    .split(' ')
+    .filter(function(termo) {
+      if (
+        termo.length < 2 ||
+        stopwords[termo] ||
+        mapa[termo]
+      ) {
+        return false;
+      }
+
+      mapa[termo] = true;
+      return true;
+    });
+}
+
+function converterHtmlParaTextoAtlas(html) {
+  return String(
+    html || ''
+  )
+    .replace(/<script[\s\S]*?<\/script>/gi, ' ')
+    .replace(/<style[\s\S]*?<\/style>/gi, ' ')
+    .replace(/\[\[(?:MIDIA|ANEXO):[^\]]+\]\]/gi, ' ')
+    .replace(/<br\s*\/?>/gi, '\n')
+    .replace(/<\/p>/gi, '\n')
+    .replace(/<\/div>/gi, '\n')
+    .replace(/<\/h[1-6]>/gi, '\n')
+    .replace(/<li[^>]*>/gi, '• ')
+    .replace(/<\/li>/gi, '\n')
+    .replace(/<[^>]+>/g, ' ')
+    .replace(/&nbsp;/gi, ' ')
+    .replace(/&amp;/gi, '&')
+    .replace(/&lt;/gi, '<')
+    .replace(/&gt;/gi, '>')
+    .replace(/&quot;/gi, '"')
+    .replace(/&#39;/gi, "'")
+    .replace(/[ \t]+/g, ' ')
+    .replace(/\n\s*\n+/g, '\n')
+    .trim();
+}
+
+function criarTrechoRelevanteAtlas(texto, perguntaAtual, termos) {
+  texto = String(
+    texto || ''
+  )
+    .replace(/[ \t]+/g, ' ')
+    .replace(/\n\s*\n+/g, '\n')
+    .trim();
+
+  if (!texto) {
+    return {
+      trecho: '',
+      pontuacao: 0
+    };
+  }
+
+  const blocos = separarBlocosAtlas(
+    texto
+  );
+
+  const perguntaNormalizada = normalizarTextoAtlas(
+    perguntaAtual
+  );
+
+  const avaliados = blocos.map(function(bloco, indice) {
+    const normalizado = normalizarTextoAtlas(
+      bloco
+    );
+
+    let pontuacao = 0;
+
+    if (
+      perguntaNormalizada.length >= 4 &&
+      normalizado.indexOf(perguntaNormalizada) !== -1
+    ) {
+      pontuacao += 35;
+    }
+
+    (termos || []).forEach(function(termo) {
+      const encontrouVariacao = obterVariacoesTermoAtlas(
+        termo
+      ).some(function(variacao) {
+        return normalizado.indexOf(variacao) !== -1;
+      });
+
+      if (encontrouVariacao) {
+        pontuacao += 5;
+      }
+    });
+
+    if (
+      /\b(ponto de atencao|atencao|orientacao operacional|regra|prazo|condicao|etapa|fluxo)\b/.test(
+        normalizado
+      )
+    ) {
+      pontuacao += 3;
+    }
+
+    return {
+      indice: indice,
+      texto: bloco,
+      pontuacao: pontuacao
+    };
+  });
+
+  const melhores = avaliados
+    .filter(function(item) {
+      return item.pontuacao > 0;
+    })
+    .sort(function(a, b) {
+      return b.pontuacao - a.pontuacao;
+    })
+    .slice(
+      0,
+      LIMITES.MAX_BLOCOS_RESPOSTA
+    );
+
+  if (melhores.length === 0) {
+    return {
+      trecho: limitarTextoAtlas(
+        texto,
+        LIMITES.MAX_CARACTERES_TRECHO_RESPOSTA
+      ),
+      pontuacao: 0
+    };
+  }
+
+  const indicesSelecionados = {};
+
+  melhores.forEach(function(item) {
+    indicesSelecionados[item.indice] = true;
+
+    if (
+      item.indice > 0 &&
+      blocos[item.indice - 1].length <= 220
+    ) {
+      indicesSelecionados[item.indice - 1] = true;
+    }
+  });
+
+  const selecionados = blocos
+    .filter(function(bloco, indice) {
+      return Boolean(indicesSelecionados[indice]);
+    })
+    .join('\n')
+    .trim();
+
+  return {
+    trecho: limitarTextoAtlas(
+      selecionados,
+      LIMITES.MAX_CARACTERES_TRECHO_RESPOSTA
+    ),
+
+    pontuacao: melhores[0].pontuacao
+  };
+}
+
+function separarBlocosAtlas(texto) {
+  const linhas = String(texto || '')
+    .split(/\n+/)
+    .map(function(item) {
+      return item.trim();
+    })
+    .filter(Boolean);
+
+  const blocos = [];
+
+  linhas.forEach(function(linha) {
+    const partes = linha.match(
+      /[^.!?;:]+[.!?;:]?/g
+    ) || [linha];
+
+    partes.forEach(function(parte) {
+      parte = parte.trim();
+
+      if (parte) {
+        blocos.push(parte);
+      }
+    });
+  });
+
+  return blocos.length > 0
+    ? blocos
+    : [String(texto || '').trim()];
+}
+
+function limitarTextoAtlas(texto, limite) {
+  texto = String(
+    texto || ''
+  ).trim();
+
+  limite = Number(
+    limite || 0
+  );
+
+  if (
+    limite <= 0 ||
+    texto.length <= limite
+  ) {
+    return texto;
+  }
+
+  return (
+    texto.substring(
+      0,
+      limite
+    ).trim() +
+    '...'
+  );
+}
+
+const LIMITES = { MAX_BLOCOS_RESPOSTA: 4, MAX_CARACTERES_TRECHO_RESPOSTA: 1800 };
+const groups = [
+  ['abrir-chamado', 'abrir chamado', ['abrir chamado', 'abro um chamado', 'novo chamado', 'criar ticket', 'registrar solicitacao']],
+  ['acompanhar-chamado', 'acompanhar chamado', ['acompanhar chamado', 'status do chamado', 'status do ticket', 'andamento do chamado']],
+  ['encerrar-chamado', 'encerrar chamado', ['encerrar chamado', 'fechar chamado', 'concluir ticket']],
+  ['redefinir-senha', 'redefinir senha', ['redefinir senha', 'redefinir a senha', 'recuperar senha', 'esqueci minha senha', 'esqueci a senha', 'resetar senha', 'reseto a senha']],
+  ['solicitar-acesso', 'solicitar acesso', ['solicitar acesso', 'pedir acesso', 'liberar permissao', 'acesso ao modulo']],
+  ['transferir-responsavel', 'transferir responsavel', ['transferir responsavel', 'trocar de dono', 'mudar responsavel', 'reatribuir solicitacao']],
+  ['revisar-procedimento', 'revisar procedimento', ['revisar procedimento', 'revisar um procedimento', 'atualizar artigo', 'validar conteudo']],
+  ['registrar-evidencia', 'registrar evidencia', ['registrar evidencia', 'anexar evidencia', 'documentar teste']]
+];
+const RETRIEVAL = {
+  VERSAO: 'demo-1.0.0',
+  MAX_CORRECOES_DIGITACAO: 4, MAX_TERMOS_ESSENCIAIS: 24, MAX_TERMOS_BUSCA: 48,
+  MAX_SECOES_RESPOSTA: 3, MAX_FRASES_RESUMO: 5, MAX_CARACTERES_RESUMO: 1250,
+  ABREVIACOES: { ti: 'tecnologia acessos', sla: 'prazo atendimento' },
+  VOCABULARIO: ['abrir', 'acesso', 'acompanhar', 'anexar', 'arquivo', 'artigo', 'atendimento', 'chamado',
+    'concluir', 'conteudo', 'credencial', 'documento', 'encerrar', 'evidencia', 'historico',
+    'permissao', 'prazo', 'procedimento', 'protocolo', 'rascunho', 'redefinir', 'registrar',
+    'requisitos', 'responsavel', 'revisar', 'revisao', 'senha', 'solicitacao', 'status', 'transferir'],
+  ALIASES: groups.map(([id, canonical, variants]) => ({ id, canonical, variants }))
+};
+const VARIACOES = Object.freeze({
+  ticket: ['ticket', 'chamado'], chamado: ['chamado', 'ticket'], responsavel: ['responsavel', 'responsabilidade'],
+  redefinir: ['redefinir', 'resetar', 'recuperar'], procedimento: ['procedimento', 'processo'],
+  revisar: ['revisar', 'revisao'], protocolo: ['protocolo', 'protocolos'],
+  acesso: ['acesso', 'permissao'], permissao: ['permissao', 'acesso']
+});
+function obterVariacoesTermoAtlas(termo) {
+  return Object.hasOwn(VARIACOES, termo) ? VARIACOES[termo] : [termo];
+}
+function contemTermo(texto, termo) {
+  return Boolean(termo) && (' ' + texto + ' ').includes(' ' + termo + ' ');
+}
+function extrairEntidadesAtlas(texto) {
+  return groups.filter(([, canon]) => contemTermo(texto, canon))
+    .map(([id, canon]) => ({ id, termosBusca: canon }));
+}
+const generic = new Set('abre abrir abro acompanho acontece ajuda artigo cadastro canal deve dia dias diz e esse essa esta fluxo hora horas informacao leva link minuto minutos nisso posso preciso processo procedimento prazo prazos quanto quantos quando quero saber sobre tempo tipo uso validade vai veja voce'.split(' '));
+const esc = text => String(text).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+const campos = article => normalizarTextoAtlas([article.title, article.summary, ...article.keywords, ...article.sections.map(s => s.title + ' ' + s.text)].join(' '));
+const specific = terms => terms.filter(t => t.length > 2 && !generic.has(t));
+
+function createEngine(articles, categories) {
+  const titles = Object.fromEntries(categories.map(category => [category.id, category.title]));
+  const index = articles.map(article => ({
+    article, words: campos(article),
+    original: { ...article, content: article.sections.map(s => '<h2>' + esc(s.title) + '</h2><p>' + esc(s.text) + '</p>').join('') }
+  }));
+  function rank(query, subset = index) {
+    const intel = analisarConsultaAtlas(query, query);
+    const core = specific(intel.termosOriginais);
+    const aliasIds = intel.aliasesDetectados.filter(id => !id.startsWith('ABREVIACAO_'));
+    const candidates = subset.map(entry => {
+      const matches = core.filter(t => obterVariacoesTermoAtlas(t).some(v => contemTermo(entry.words, v))).length;
+      const alias = aliasIds.includes(entry.article.id);
+      if (!alias && (!matches || matches < Math.ceil(core.length * 0.55))) return null;
+      const score = pontuarConteudoAtlas(entry.original, titles, intel.consultaExpandida,
+        intel.consultaInterpretada, intel.termosEssenciais, intel.termosOriginais, intel);
+      return score ? { ...score, pontuacao: score.pontuacao + (alias ? 100 : 0) } : null;
+    }).filter(Boolean).sort((a, b) => b.pontuacao - a.pontuacao || a.id.localeCompare(b.id));
+    return { intel, candidates, aliasIds, core };
+  }
+  function search(query, category = 'todos') {
+    const subset = index.filter(row => category === 'todos' || row.article.categoryId === category);
+    if (!String(query || '').trim()) return subset.map(row => ({ id: row.article.id }));
+    return rank(String(query).slice(0, 600), subset).candidates;
+  }
+  function ask(input, previousId = '') {
+    const question = String(input || '').trim();
+    const normalized = normalizarTextoAtlas(question);
+    if (!normalized || question.length > 600) {
+      return { type: 'clarify', text: 'Faça uma pergunta de até 600 caracteres sobre um processo do catálogo.' };
+    }
+    if (/\b(ignore|ignorar|revele|revelar|execute|executar)\b.*\b(regra|regras|instrucoes|prompt|codigo|credenciais|segredo)\b/.test(normalized)) {
+      return { type: 'blocked', text: 'O assistente consulta apenas os processos disponíveis na demonstração.' };
+    }
+    const continuation = /^(?:e )?(?:qual (?:e )?o prazo|quanto tempo(?: demora)?|quantos dias(?: leva)?|quais (?:sao )?os requisitos|qual (?:e )?o canal)$/.test(normalized);
+    const context = continuation ? index.find(row => row.article.id === previousId) : null;
+    const query = context ? question + ' ' + context.article.title : question;
+    const { intel, candidates, aliasIds, core } = rank(query, context ? [context] : index);
+    if (aliasIds.length > 1) {
+      return { type: 'clarify', text: 'Encontrei mais de um processo. Faça uma pergunta sobre um deles por vez.' };
+    }
+    if (!core.length && !context && !aliasIds.length) {
+      return { type: 'clarify', text: 'De qual processo você quer saber? Informe o assunto, como abertura de chamado ou redefinição de senha.' };
+    }
+    const best = candidates[0];
+    const fallback = { type: 'no-source', text: 'Não encontrei informação suficiente na base fictícia para responder a essa pergunta.' };
+    if (!best || best.pontuacao < 24) return fallback;
+    if (!context && !aliasIds.length && candidates[1] && best.pontuacao - candidates[1].pontuacao < 9) {
+      return { type: 'clarify', text: 'Mais de um processo parece relevante. Inclua o nome da etapa ou da solicitação.' };
+    }
+    const article = index.find(row => row.article.id === best.id).article;
+    const section = article.sections.find(s => s.title === best.secaoPrincipal);
+    if (!section) return fallback;
+    const evidence = {
+      PRAZO: /\b\d+\s+(?:minutos?|horas?|dias?|semanas?)\b/,
+      VALOR_TAXA: /\b(?:valor|taxa|preco|custo)\b.{0,30}\d/,
+      DOCUMENTOS: /\b(?:documentos?|requisitos?|informe|inclua|arquivo)\b/,
+      CANAL: /\b(?:abra|tela|area|formulario)\b/
+    }[intel.intencao.id];
+    if (evidence && !evidence.test(normalizarTextoAtlas(section.text))) return fallback;
+    // Exibe apenas frases que constam literalmente da seção citada.
+    const excerpt = best.resumoBreve.split('\n').map(line => line.replace(/^•\s*/, '').trim())
+      .filter(line => line && section.text.includes(line)).join(' ');
+    return {
+      type: 'answer', text: excerpt && (!evidence || evidence.test(normalizarTextoAtlas(excerpt))) ? excerpt : section.text,
+      source: { id: article.id, title: article.title, section: section.title },
+      intent: intel.intencao.titulo, corrections: intel.correcoesAplicadas,
+      evidence: best.evidencias, contextual: Boolean(context)
+    };
+  }
+  return Object.freeze({ search, ask });
+}
+
+
+
+const icons = Object.freeze({
+  book: 'M4 19.5A2.5 2.5 0 0 1 6.5 17H20M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2ZM8 7h8M8 11h6',
+  search: 'M21 21l-4.2-4.2M19 11a8 8 0 1 1-16 0 8 8 0 0 1 16 0Z',
+  chat: 'M20.5 14.5a3 3 0 0 1-3 3H9l-5.5 4v-16a3 3 0 0 1 3-3h11a3 3 0 0 1 3 3zM8 8h8M8 12h6',
+  key: 'M15.5 13a5.5 5.5 0 1 0-4.8-2.8L3 18v3h4v-3h3v-3l2-2m5.5-5.5h.01',
+  clock: 'M12 7v5l3 2M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z',
+  check: 'M4 12l5 5 11-11',
+  shield: 'M12 2l8 4v6c0 4-3 8-8 10-5-2-8-6-8-10V6zM8 12l3 3 5-5',
+  swap: 'M4 7h15l-4-4M20 17H5l4 4',
+  file: 'M6 2h8l4 4v16H6zM14 2v5h4M9 12h6M9 16h6',
+  star: 'm12 2 3.1 6.3 7 .9-5 4.9 1.1 6.9-6.2-3.3L5.8 21 7 14.1l-5-4.9 7-.9z',
+  moon: 'M20.9 13.7A9 9 0 0 1 10.3 3.1 9 9 0 1 0 20.9 13.7z',
+  sun: 'M12 2v2m0 16v2M2 12h2m16 0h2M4.9 4.9l1.4 1.4m11.4 11.4 1.4 1.4M19.1 4.9l-1.4 1.4M6.3 17.7l-1.4 1.4M16 12a4 4 0 1 1-8 0 4 4 0 0 1 8 0z'
+});
+const engine = createEngine(articles, categories);
+const articleById = new Map(articles.map(article => [article.id, article]));
+const categoryById = new Map(categories.map(category => [category.id, category]));
+const get = id => document.getElementById(id);
+const sections = { catalogo: get('catalog'), assistente: get('assistant'), favoritos: get('favorites'), processo: get('detail') };
+
+function readLocal(key) {
+  try { return localStorage.getItem('atlas-demo-' + key); } catch { return null; }
+}
+function saveLocal(key, value) {
+  try { localStorage.setItem('atlas-demo-' + key, value); } catch { /* A interface funciona sem armazenamento. */ }
+}
+function loadFavorites() {
+  try {
+    const saved = JSON.parse(readLocal('favorites') || '[]');
+    return new Set(Array.isArray(saved) ? saved.filter(id => articleById.has(id)) : []);
+  } catch { return new Set(); }
+}
+const favorites = loadFavorites();
+let theme = readLocal('theme') === 'dark' ? 'dark' : 'light';
+let category = 'todos';
+let previousId = '';
+let view = 'catalogo';
+
+function element(tag, className = '', text = '') {
+  const e = document.createElement(tag);
+  if (className) e.className = className;
+  if (text) e.textContent = text;
+  return e;
+}
+function setIcon(target, name) {
+  const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+  svg.setAttribute('viewBox', '0 0 24 24');
+  svg.setAttribute('fill', 'none');
+  svg.setAttribute('stroke', 'currentColor');
+  svg.setAttribute('stroke-width', '1.75');
+  svg.setAttribute('stroke-linecap', 'round');
+  svg.setAttribute('stroke-linejoin', 'round');
+  svg.setAttribute('aria-hidden', 'true');
+  const path = document.createElementNS(svg.namespaceURI, 'path');
+  path.setAttribute('d', icons[name] || icons.book);
+  svg.append(path);
+  target.replaceChildren(svg);
+}
+function announce(message) { get('announcement').textContent = message; }
+function applyTheme() {
+  document.documentElement.dataset.theme = theme;
+  const dark = theme === 'dark';
+  setIcon(get('theme'), dark ? 'sun' : 'moon');
+  get('theme').setAttribute('aria-label', dark ? 'Ativar tema claro' : 'Ativar tema escuro');
+}
+function articleLink(id, section = '') {
+  return '#processo/' + id + (section ? '?secao=' + encodeURIComponent(section) : '');
+}
+function saveButton(article, labeled = false) {
+  const button = element('button', labeled ? 'secondary' : '');
+  button.type = 'button';
+  button.dataset.favoriteId = article.id;
+  if (labeled) button.dataset.labeled = 'true';
+  button.addEventListener('click', () => {
+    const wasSaved = favorites.has(article.id);
+    if (wasSaved) favorites.delete(article.id);
+    else favorites.add(article.id);
+    saveLocal('favorites', JSON.stringify([...favorites]));
+    if (view === 'favoritos') {
+      renderFavorites();
+      get('favorites-title').focus();
+    } else {
+      document.querySelectorAll('[data-favorite-id]').forEach(syncSaveButton);
+    }
+    announce(wasSaved ? 'Removido dos favoritos.' : 'Adicionado aos favoritos.');
+  });
+  syncSaveButton(button);
+  return button;
+}
+function syncSaveButton(button) {
+  const saved = favorites.has(button.dataset.favoriteId);
+  const label = saved ? 'Remover dos favoritos' : 'Salvar nos favoritos';
+  const article = articleById.get(button.dataset.favoriteId);
+  button.setAttribute('aria-pressed', String(saved));
+  button.setAttribute('aria-label', label + ': ' + article.title);
+  button.title = label;
+  if (button.dataset.labeled) button.textContent = saved ? 'Salvo nos favoritos' : label;
+  else setIcon(button, 'star');
+}
+function card(article) {
+  const root = element('article', 'card');
+  const top = element('div', 'card-top');
+  const tile = element('span', 'tile');
+  setIcon(tile, article.icon);
+  top.append(tile, saveButton(article));
+  const link = element('a', '', 'Abrir procedimento →');
+  link.href = articleLink(article.id);
+  link.setAttribute('aria-label', 'Abrir procedimento: ' + article.title);
+  root.append(top, element('p', 'card-cat', categoryById.get(article.categoryId).title),
+    element('h3', '', article.title), element('p', '', article.summary), link);
+  return root;
+}
+function renderCatalog() {
+  const matches = engine.search(get('search').value, category);
+  get('results').textContent = matches.length + (matches.length === 1 ? ' processo' : ' processos');
+  get('cards').replaceChildren(...matches.map(match => card(articleById.get(match.id))));
+  if (!matches.length) get('cards').append(element('p', 'empty', 'Nenhum procedimento encontrado. Tente outro termo ou selecione Todas.'));
+  for (const button of get('filters').children) button.setAttribute('aria-pressed', String(button.dataset.category === category));
+}
+function renderFavorites() {
+  const cards = get('favorite-cards');
+  cards.replaceChildren(...[...favorites].map(id => card(articleById.get(id))));
+  if (!favorites.size) cards.append(element('p', 'empty', 'Você ainda não salvou procedimentos. Use a estrela de um cartão do catálogo.'));
+}
+function renderArticle(id, sectionTitle) {
+  const article = articleById.get(id);
+  const panel = element('div', 'article-panel');
+  const heading = element('h1', '', article?.title || 'Procedimento não encontrado');
+  heading.id = 'detail-title';
+  heading.tabIndex = -1;
+  if (!article) {
+    panel.append(heading, element('p', 'article-desc', 'Volte ao catálogo para escolher um dos procedimentos de demonstração.'));
+    get('article').replaceChildren(panel);
+    return heading;
+  }
+  panel.append(element('p', 'eyebrow', categoryById.get(article.categoryId).title + ' · Processo fictício'),
+    heading, element('p', 'article-desc', article.summary), saveButton(article, true));
+  let highlight = null;
+  for (const section of article.sections) {
+    const block = element('section', 'article-section');
+    const title = element('h2', '', section.title);
+    title.tabIndex = -1;
+    block.append(title, element('p', '', section.text));
+    if (section.title === sectionTitle) {
+      block.classList.add('highlight');
+      highlight = title;
+    }
+    panel.append(block);
+  }
+  get('article').replaceChildren(panel);
+  return highlight || heading;
+}
+function route(focus = false) {
+  const hash = location.hash.slice(1);
+  if (hash === 'main') return;
+  const [path, query] = hash.split('?');
+  const [page, id] = path.split('/');
+  view = Object.hasOwn(sections, page) ? page : 'catalogo';
+  for (const [key, value] of Object.entries(sections)) value.hidden = key !== view;
+  document.querySelectorAll('[data-nav]').forEach(link => {
+    if (link.dataset.nav === (view === 'processo' ? 'catalogo' : view)) link.setAttribute('aria-current', 'page');
+    else link.removeAttribute('aria-current');
+  });
+  let target;
+  if (view === 'processo') target = renderArticle(id, new URLSearchParams(query).get('secao'));
+  else {
+    if (view === 'catalogo') renderCatalog();
+    if (view === 'favoritos') renderFavorites();
+    target = sections[view].querySelector('h1');
+    target.tabIndex = -1;
+  }
+  if (focus || (view === 'processo' && query)) {
+    window.scrollTo(0, 0);
+    target.focus({ preventScroll: true });
+    if (target.closest('.highlight')) target.scrollIntoView({ block: 'center' });
+  }
+}
+function addMessage(type, text, response) {
+  const messages = get('messages');
+  const box = element('div', 'bubble' + (type === 'user' ? ' user' : ''));
+  box.append(element('p', '', text));
+  if (response?.source) {
+    const { id, title, section } = response.source;
+    const source = element('a', 'source', 'Fonte: ' + title + ' › ' + section);
+    source.href = articleLink(id, section);
+    const tags = [response.intent];
+    if (response.contextual) tags.push('Contexto da pergunta anterior');
+    if (response.corrections.length) tags.push('Correção: ' + response.corrections.map(c => c.de + ' → ' + c.para).join(', '));
+    const details = element('details');
+    details.append(element('summary', '', 'Como a fonte foi escolhida'),
+      element('p', '', response.evidence.map(item => item.toLowerCase().replaceAll('_', ' ')).join(' · ')));
+    box.append(source, element('small', '', tags.join(' · ')), details);
+  }
+  messages.append(box);
+  while (messages.childElementCount > 25) messages.firstElementChild.remove();
+  messages.scrollTop = messages.scrollHeight;
+}
+function resetChat() {
+  previousId = '';
+  get('messages').replaceChildren();
+  addMessage('assistant', 'Olá! Posso ajudar a localizar etapas, requisitos e prazos nos procedimentos fictícios do catálogo.');
+}
+function sendQuestion(text) {
+  text = text.trim();
+  if (!text) return;
+  addMessage('user', text);
+  const response = engine.ask(text, previousId);
+  if (response.source) previousId = response.source.id;
+  else if (response.type === 'no-source' || response.type === 'blocked') previousId = '';
+  addMessage('assistant', response.text, response);
+  get('question').value = '';
+}
+
+for (const group of [{ id: 'todos', title: 'Todas' }, ...categories]) {
+  const button = element('button', 'filter', group.title);
+  button.type = 'button';
+  button.dataset.category = group.id;
+  button.addEventListener('click', () => { category = group.id; renderCatalog(); });
+  get('filters').append(button);
+}
+for (const query of ['Como abro um chamdo?', 'Como redefinir a snha?', 'Quero trocar de dono', 'Quais são os requisitos para solicitar acesso?', 'Qual é a previsão do tempo?']) {
+  const button = element('button', 'secondary', query);
+  button.type = 'button';
+  button.addEventListener('click', () => { sendQuestion(query); get('question').focus(); });
+  get('examples').append(button);
+}
+for (const [id, icon] of [['brand-icon', 'book'], ['hero-icon', 'book'], ['search-icon', 'search'], ['chat-icon', 'chat']]) setIcon(get(id), icon);
+get('theme').addEventListener('click', () => { theme = theme === 'dark' ? 'light' : 'dark'; saveLocal('theme', theme); applyTheme(); });
+get('search').addEventListener('input', renderCatalog);
+get('reset-chat').addEventListener('click', () => { resetChat(); get('question').focus(); });
+get('ask-form').addEventListener('submit', event => { event.preventDefault(); sendQuestion(get('question').value); });
+document.addEventListener('keydown', event => {
+  if ((event.ctrlKey || event.metaKey) && event.key.toLowerCase() === 'k') {
+    event.preventDefault();
+    if (view !== 'catalogo') {
+      location.hash = '#catalogo';
+      window.addEventListener('hashchange', () => get('search').focus(), { once: true });
+    } else get('search').focus();
+  }
+});
+window.addEventListener('hashchange', () => route(true));
+applyTheme();
+resetChat();
+route();
+
+})();</script>
+</body>
+</html>

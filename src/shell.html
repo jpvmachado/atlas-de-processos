@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="pt-BR" data-theme="light">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Demonstração de uma central de procedimentos com busca local e respostas vinculadas às fontes.">
+  <meta name="color-scheme" content="light dark">
+  <title>Atlas de Processos · Demonstração de portfólio</title>
+  <style>/* STYLES */</style>
+</head>
+<body>
+  <a class="skip" href="#main">Pular para o conteúdo</a>
+  <header class="top">
+    <div class="top-inner">
+      <a class="brand" href="#catalogo"><span id="brand-icon" class="brand-icon" aria-hidden="true"></span><span>Atlas<span class="brand-sub"> de Processos</span></span></a>
+      <nav class="nav" aria-label="Menu principal">
+        <a href="#catalogo" data-nav="catalogo">Catálogo</a>
+        <a href="#assistente" data-nav="assistente">Assistente</a>
+        <a href="#favoritos" data-nav="favoritos">Favoritos</a>
+      </nav>
+      <div class="top-end">
+        <span class="demo-mark"><span></span> Dados fictícios</span>
+        <button id="theme" class="icon-btn" type="button" title="Alternar tema" aria-label="Ativar tema escuro"></button>
+      </div>
+    </div>
+  </header>
+  <main id="main" tabindex="-1">
+    <section id="catalog" class="screen" aria-labelledby="catalog-title">
+      <div class="hero">
+        <div class="hero-art" aria-hidden="true">
+          <span class="orbit o1"></span><span class="orbit o2"></span><span class="orbit o3"></span>
+          <span class="node n1"></span><span class="node n2"></span><span class="node n3"></span>
+          <div id="hero-icon" class="hero-icon"></div>
+        </div>
+        <div class="hero-content">
+          <p class="eyebrow">Base de conhecimento · Edição de portfólio</p>
+          <h1 id="catalog-title">Conhecimento para<br class="wide-break"> a operação.</h1>
+          <p>Encontre procedimentos, consulte etapas e faça perguntas com respostas ligadas à fonte.</p>
+          <div class="search">
+            <span id="search-icon" aria-hidden="true"></span>
+            <label for="search" class="sr">Buscar procedimento</label>
+            <input id="search" type="search" maxlength="600" placeholder="Busque por título ou palavra-chave" autocomplete="off">
+            <kbd aria-hidden="true">Ctrl K</kbd>
+          </div>
+        </div>
+      </div>
+      <div class="catalog-head">
+        <div><p class="eyebrow">Navegação</p><h2>Explorar procedimentos</h2></div>
+        <p class="count" id="results" role="status"></p>
+      </div>
+      <div id="filters" class="filters" aria-label="Filtrar por categoria"></div>
+      <div id="cards" class="card-grid"></div>
+    </section>
+    <section id="favorites" class="screen" aria-labelledby="favorites-title" hidden>
+      <div class="section-intro"><p class="eyebrow">Sua seleção</p><h1 id="favorites-title">Favoritos</h1><p>Seus procedimentos salvos ficam neste navegador.</p></div>
+      <div id="favorite-cards" class="card-grid"></div>
+    </section>
+    <section id="detail" class="screen" aria-labelledby="detail-title" hidden>
+      <a class="back" href="#catalogo">← Voltar ao catálogo</a>
+      <article id="article"></article>
+    </section>
+    <section id="assistant" class="screen" aria-labelledby="assistant-title" hidden>
+      <div class="section-intro"><p class="eyebrow">Respostas com fonte</p><h1 id="assistant-title">Assistente de processos</h1><p>Faça perguntas sobre o catálogo. O assistente seleciona trechos dos procedimentos de exemplo.</p></div>
+      <div class="assistant-layout">
+        <div class="chat">
+          <div class="chat-head"><span id="chat-icon" class="tile" aria-hidden="true"></span><div><strong>Assistente Atlas</strong><small>Busca local</small></div><button class="text-btn" id="reset-chat" type="button">Limpar conversa</button></div>
+          <div id="messages" class="messages" role="log" aria-live="polite" aria-label="Conversa"></div>
+          <form id="ask-form" class="ask-form">
+            <label class="sr" for="question">Sua pergunta</label>
+            <input id="question" maxlength="600" placeholder="Escreva uma pergunta sobre os processos…" autocomplete="off" required>
+            <button type="submit" class="primary">Perguntar</button>
+          </form>
+        </div>
+        <aside class="suggestions">
+          <p class="eyebrow">Experimente</p><h2>Perguntas de exemplo</h2>
+          <p>Teste um erro de digitação, uma expressão informal ou uma pergunta sem fonte.</p>
+          <div id="examples" class="examples"></div>
+        </aside>
+      </div>
+    </section>
+  </main>
+  <footer class="footer"><span>Atlas de Processos</span><span>Demonstração independente · Conteúdo sintético</span></footer>
+  <p id="announcement" class="sr" role="status"></p>
+  <script>/* APP */</script>
+</body>
+</html>
